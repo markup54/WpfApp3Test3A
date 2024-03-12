@@ -23,12 +23,13 @@ namespace WpfApp3Test3A
     {
         public List<Pytanie> ListaPytan { get; set; }
         public int NumerPytanie {get; set; }
-
+        public int LiczbaPunktow { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             odczytajPytania();
             NumerPytanie = 0;
+            LiczbaPunktow = 0;
             trescpytania_textblock.Text = ListaPytan[0].Tresc;
         }
 
@@ -56,15 +57,38 @@ namespace WpfApp3Test3A
         }
 
         private void takButton_Click(object sender, RoutedEventArgs e)
-        {
+        {   sprawdzPunkty(NumerPytanie,true);
             NumerPytanie++;
-            trescpytania_textblock.Text = ListaPytan[NumerPytanie].Tresc;
+            sprawdzenie(NumerPytanie);
+            
+            
         }
-
-        private void nieButton_Click(object sender, RoutedEventArgs e)
+        private void sprawdzenie(int i)
         {
+            if (i == ListaPytan.Count)
+            {
+                MessageBox.Show("Test został zakończony twój wynik: " + LiczbaPunktow.ToString());
+                Close();
+                return;
+            }
+            else
+            {
+                trescpytania_textblock.Text = ListaPytan[NumerPytanie].Tresc;
+            }
+        }
+        private void nieButton_Click(object sender, RoutedEventArgs e)
+        { sprawdzPunkty(NumerPytanie,false);
             NumerPytanie++;
-            trescpytania_textblock.Text = ListaPytan[NumerPytanie].Tresc;
+            sprawdzenie(NumerPytanie);
+            
+           
+        }
+        private void sprawdzPunkty(int i,bool odp)
+        {
+            if(odp == ListaPytan[i].Odpowiedz)
+            {
+                LiczbaPunktow++;
+            }
         }
     }
 }
