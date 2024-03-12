@@ -1,0 +1,8 @@
+Czy Android został zbudowany na podstawie systemu operacyjnego Windows?
+false
+Czy WPF to środowisko do aplikacji desktopowych?
+true
+Czy Jetpack Compose wykorzystuje język XML?
+false
+Czy Angular jest frameworkiem do obsługi baz danych?
+false

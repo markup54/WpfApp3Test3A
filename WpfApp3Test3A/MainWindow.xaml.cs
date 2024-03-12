@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,50 @@ namespace WpfApp3Test3A
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<Pytanie> ListaPytan { get; set; }
+        public int NumerPytanie {get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+            odczytajPytania();
+            NumerPytanie = 0;
+            trescpytania_textblock.Text = ListaPytan[0].Tresc;
+        }
+
+        private void odczytajPytania()
+        {
+            ListaPytan = new List<Pytanie>();
+            StreamReader plik = new StreamReader("pytania.txt");
+            string tresc = plik.ReadLine();
+            string odp = plik.ReadLine();
+            Pytanie pytanie;
+            while (tresc != null)
+            {
+                if (odp == "true")
+                {
+                    pytanie = new Pytanie(tresc, true);
+                }
+                else
+                {
+                    pytanie = new Pytanie(tresc, false);
+                }
+                ListaPytan.Add(pytanie);
+                tresc = plik.ReadLine();
+                odp = plik.ReadLine();
+            }
+        }
+
+        private void takButton_Click(object sender, RoutedEventArgs e)
+        {
+            NumerPytanie++;
+            trescpytania_textblock.Text = ListaPytan[NumerPytanie].Tresc;
+        }
+
+        private void nieButton_Click(object sender, RoutedEventArgs e)
+        {
+            NumerPytanie++;
+            trescpytania_textblock.Text = ListaPytan[NumerPytanie].Tresc;
         }
     }
 }

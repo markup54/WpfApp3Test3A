@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp3Test3A"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        Title="Test Pytań" Height="450" Width="800">
+    <StackPanel>
+        <TextBlock x:Name="trescpytania_textblock"
+                   Margin="20"
+                   Padding="30"
+                   >tu bedzie tresc pytania</TextBlock>
+        <Button x:Name="takButton" 
+                Click="takButton_Click">Tak</Button>
+        <Button x:Name="nieButton" 
+                Click="nieButton_Click">Nie</Button>
+    </StackPanel>
 </Window>
